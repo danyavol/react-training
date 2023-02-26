@@ -1,25 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import UserForm1 from "./UserForm1/UserForm1";
+import UserForm2 from "./UserForm2/UserForm2";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    function onSubmit(value) {
+        console.log(value);
+    }
+
+    return (
+        <>
+            <UserForm1 onSubmit={onSubmit}></UserForm1>
+
+            <hr/>
+            
+            <UserForm2 onSubmit={onSubmit}></UserForm2>
+        </>
+    );
 }
 
 export default App;
