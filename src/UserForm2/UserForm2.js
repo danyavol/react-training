@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function UserForm2(props) {
     const [user, setUser] = useState({
@@ -54,5 +55,9 @@ function UserForm2(props) {
         </>
     );
 }
+
+UserForm2.propTypes = {
+    onSubmit: PropTypes.func.isRequired
+};
 
 export default UserForm2;

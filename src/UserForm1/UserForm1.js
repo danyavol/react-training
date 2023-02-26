@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types'; 
 
 function UserForm1(props) {
     const [firstName, setFirstName] = useState("");
@@ -43,5 +44,9 @@ function UserForm1(props) {
         </>
     );
 }
+
+UserForm1.propTypes = {
+    onSubmit: PropTypes.func.isRequired
+};
 
 export default UserForm1;
