@@ -1,5 +1,5 @@
 import { useReducer } from 'react';
-import { actionTypes, defaultState, formReducer } from './UserForm3.reducer';
+import { actionTypes, defaultState, formReducer, getFormValue } from './UserForm3.reducer';
 import { isFormValid } from './UserForm3.validator';
 
 function UserForm3(props) {
@@ -13,8 +13,7 @@ function UserForm3(props) {
             return;
         }
 
-        console.log('submitted');
-        props.onSubmit(state);
+        props.onSubmit(getFormValue(state));
     }
 
     function valueChangeHandler(prop) {
@@ -51,11 +50,11 @@ function UserForm3(props) {
 
     return (
         <>
-            <h2>UserForm3 (reducer)</h2>
+            <h2>UserForm3 (useReducer)</h2>
             <div className="form">
                 <div className="control">
-                    <label className="control-label" htmlFor="firstName">First Name</label>
-                    <input id="firstName" value={state.firstName.value} 
+                    <label className="control-label" htmlFor="firstName3">First Name</label>
+                    <input id="firstName3" value={state.firstName.value} 
                         className={getClassName("firstName")}
                         onChange={valueChangeHandler("firstName")}
                         onBlur={blurHandler("firstName")}
@@ -67,8 +66,8 @@ function UserForm3(props) {
                     }
                 </div>
                 <div className="control">
-                    <label className="control-label" htmlFor="lastName">Last Name</label>
-                    <input id="lastName" value={state.lastName.value} 
+                    <label className="control-label" htmlFor="lastName3">Last Name</label>
+                    <input id="lastName3" value={state.lastName.value} 
                         className={getClassName("lastName")}
                         onChange={valueChangeHandler("lastName")}
                         onBlur={blurHandler("lastName")}
@@ -80,8 +79,8 @@ function UserForm3(props) {
                     }
                 </div>
                 <div className="control">
-                    <label className="control-label" htmlFor="address">Address</label>
-                    <input id="address" value={state.address.value} 
+                    <label className="control-label" htmlFor="address3">Address</label>
+                    <input id="address3" value={state.address.value} 
                         className={getClassName("address")}
                         onChange={valueChangeHandler("address")}
                         onBlur={blurHandler("address")}

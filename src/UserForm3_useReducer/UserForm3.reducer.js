@@ -47,6 +47,14 @@ export function formReducer(state, action) {
     }
 }
 
+export function getFormValue(formState) {
+    const value = {};
+    for (let key in formState) {
+        value[key] = formState[key].value;
+    }
+    return value;
+}
+
 function inputConstructor(defaultValue, validator) {
     const validationError = validator(defaultValue);
     return {

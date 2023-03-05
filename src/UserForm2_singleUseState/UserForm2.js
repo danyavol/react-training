@@ -36,22 +36,22 @@ function UserForm2(props) {
     return (
         <>
             <h2>UserForm2 (single useState)</h2>
-            <p>
-                <label htmlFor="firstName">First Name</label>
-                <input id="firstName" value={user.firstName} onChange={firstNameHandler}></input>
-            </p>
-            <p>
-                <label htmlFor="lastName">Last Name</label>
-                <input id="lastName" value={user.lastName} onChange={lastNameHandler}></input>
-            </p>
-            <p>
-                <label htmlFor="address">Address</label>
-                <input id="address" value={user.address} onChange={addressHandler}></input>
-            </p>
+            <div className="form">
+                <div className="control">
+                    <label className="control-label" htmlFor="firstName2">First Name</label>
+                    <input className="input" id="firstName2" value={user.firstName} onChange={firstNameHandler}></input>
+                </div>
+                <div className="control">
+                    <label className="control-label" htmlFor="lastName2">Last Name</label>
+                    <input className="input" id="lastName2" value={user.lastName} onChange={lastNameHandler}></input>
+                </div>
+                <div className="control">
+                    <label className="control-label" htmlFor="address2">Address</label>
+                    <input className="input" id="address2" value={user.address} onChange={addressHandler}></input>
+                </div>
 
-            <p>{JSON.stringify(user)}</p>
-
-            <button onClick={submit}>Submit</button>
+                <button className="submit" onClick={submit}>Submit</button>
+            </div>
         </>
     );
 }
