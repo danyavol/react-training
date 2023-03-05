@@ -48,49 +48,31 @@ function UserForm3(props) {
         return `input${showError(prop) ? " input-invalid" : ""}`;
     }
 
+    function getControlTemplate({ controlName, label, id }) {
+        return (
+            <div className="control">
+                <label className="control-label" htmlFor={id}>{label}</label>
+                <input id={id} value={state[controlName].value} 
+                    className={getClassName(controlName)}
+                    onChange={valueChangeHandler(controlName)}
+                    onBlur={blurHandler(controlName)}
+                ></input>
+                {
+                    showError(controlName)
+                    ? <span className="validation-error">{state[controlName].validationError}</span>
+                    : null
+                }
+            </div>
+        );
+    }
+
     return (
         <>
             <h2>UserForm3 (useReducer)</h2>
             <div className="form">
-                <div className="control">
-                    <label className="control-label" htmlFor="firstName3">First Name</label>
-                    <input id="firstName3" value={state.firstName.value} 
-                        className={getClassName("firstName")}
-                        onChange={valueChangeHandler("firstName")}
-                        onBlur={blurHandler("firstName")}
-                    ></input>
-                    {
-                        showError("firstName")
-                        ? <span className="validation-error">{state.firstName.validationError}</span>
-                        : null
-                    }
-                </div>
-                <div className="control">
-                    <label className="control-label" htmlFor="lastName3">Last Name</label>
-                    <input id="lastName3" value={state.lastName.value} 
-                        className={getClassName("lastName")}
-                        onChange={valueChangeHandler("lastName")}
-                        onBlur={blurHandler("lastName")}
-                    ></input>
-                    {
-                        showError("lastName")
-                        ? <span className="validation-error">{state.lastName.validationError}</span>
-                        : null
-                    }
-                </div>
-                <div className="control">
-                    <label className="control-label" htmlFor="address3">Address</label>
-                    <input id="address3" value={state.address.value} 
-                        className={getClassName("address")}
-                        onChange={valueChangeHandler("address")}
-                        onBlur={blurHandler("address")}
-                    ></input>
-                    {
-                        showError("address")
-                        ? <span className="validation-error">{state.address.validationError}</span>
-                        : null
-                    }
-                </div>
+                { getControlTemplate({ controlName: "firstName", label: "First Name", id: "firstName3" }) }
+                { getControlTemplate({ controlName: "lastName", label: "Last Name", id: "lastName3" }) }
+                { getControlTemplate({ controlName: "address", label: "Address", id: "address3" }) }
 
                 <button className="submit" onClick={submit}>Submit</button>
             </div>
