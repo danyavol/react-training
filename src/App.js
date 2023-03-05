@@ -1,6 +1,7 @@
 import './App.css';
-import UserForm1 from "./UserForm1/UserForm1";
-import UserForm2 from "./UserForm2/UserForm2";
+import UserForm1 from "./UserForm1_multipleUseState/UserForm1";
+import UserForm2 from "./UserForm2_singleUseState/UserForm2";
+import UserForm3 from "./UserForm3_useReducer/UserForm3";
 
 function App() {
 
@@ -15,6 +16,10 @@ function App() {
             <hr/>
             
             <UserForm2 onSubmit={onSubmit}></UserForm2>
+
+            <hr/>
+            
+            <UserForm3 onSubmit={onSubmit}></UserForm3>
         </>
     );
 }
