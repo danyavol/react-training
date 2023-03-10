@@ -1,0 +1,43 @@
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.editing {
+    background-color: yellow;
+}
+
+.user + .user {
+    border-top: 1px solid #ccc;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.main {
+    font-weight: 500;
+    font-size: 1.2em;
+}
+
+.secondary {
+    color: #585858;
+}
+
+.actionButtonsWrapper {
+    display: flex;
+    gap: 10px;
+}
+
+.actionButton {
+    padding: 5px 20px;
+}

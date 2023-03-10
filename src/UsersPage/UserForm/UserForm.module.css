@@ -1,0 +1,8 @@
+.actionButtonsWrapper {
+    display: flex;
+    gap: 10px;
+}
+
+.actionButton {
+    padding: 5px 20px;
+}
