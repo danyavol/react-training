@@ -1,19 +1,18 @@
 import styles from "./Popup.module.css";
 import "./Popup.css";
 import ReactDOM from 'react-dom';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-export default function Popup({ message, duration}) {
-    const [show, setShow] = useState(false);
-
+export default function Popup({ message, duration, onClose }) {
     useEffect(() => {
-        setShow(true);
-        const timer = setTimeout(() => setShow(false), duration);
+        const timer = setTimeout(() => {
+            onClose();
+        }, duration);
         return () => clearTimeout(timer);
     }, [duration]);
 
     return ReactDOM.createPortal((
-        show && <div className={styles.container}>
+        <div className={styles.container}>
             <div className={styles.message}>{message}</div>
         </div>
     ), document.querySelector('#popups'));

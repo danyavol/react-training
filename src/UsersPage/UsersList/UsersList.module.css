@@ -1,6 +1,6 @@
-.container {
-    max-width: 600px;
-    margin: auto;
+.message {
+    text-align: center;
+    color: #666;
 }
 
 .user {

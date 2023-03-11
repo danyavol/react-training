@@ -1,0 +1,10 @@
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.refreshButton {
+    padding: 5px 20px;
+    margin: 20px 0 20px auto;
+    display: block;
+}

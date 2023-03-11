@@ -6,14 +6,14 @@ const storageKey = 'users';
 
 export const usersApi = {
     async getUsers() {
-        await sleep(1000);
-        randomThrowError();
+        await sleep(500);
+        randomThrowError("Failed to get the list of users");
 
         return localStorageService.getData(storageKey) || [];
     },
     async updateUser(userId, partialUser) {
-        await sleep(1000);
-        randomThrowError();
+        await sleep(500);
+        randomThrowError("Failed to save the user");
 
         const users = localStorageService.getData(storageKey) || [];
         const index = users.findIndex(user => user.id === userId);
@@ -23,8 +23,8 @@ export const usersApi = {
 
     },
     async createUser(userForm) {
-        await sleep(1000);
-        randomThrowError();
+        await sleep(500);
+        randomThrowError("Failed to create the user");
 
         const newUser = {
             id: v4(),
@@ -35,8 +35,8 @@ export const usersApi = {
         localStorageService.saveData(storageKey, [...users, newUser]);
     },
     async deleteUser(userId) {
-        await sleep(1000);
-        randomThrowError();
+        await sleep(500);
+        randomThrowError("Failed to delete the user");
 
         const users = localStorageService.getData(storageKey) || [];
         const index = users.findIndex(u => u.id === userId);
@@ -46,7 +46,7 @@ export const usersApi = {
     }
 };
 
-function randomThrowError(chance = 0) {
+function randomThrowError(message = "Unknown error occurred", chance = 0.3) {
     if (Math.random() <= chance) 
-        throw new Error('Failed to get data');
+        throw new Error(message);
 }

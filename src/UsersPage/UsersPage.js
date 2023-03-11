@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
+import Loading from "../common/components/Loading/Loading";
+import { usePopups } from "../common/components/Popup/Popup.service";
 import { formGroup } from "../common/formGroup";
 import { useControl } from "../common/hooks/useControl";
 import { Validators } from "../common/validators";
-import Search from "./Search/Search";
 import UserForm from "./UserForm/UserForm";
 import UsersList from "./UsersList/UsersList";
 import { usersApi } from "./UsersPage.api";
-import Loading from "../common/components/Loading/Loading";
-import Popup from "../common/components/Popup/Popup";
+import styles from "./UsersPage.module.css";
 
 const defaultFormValue = { name: "", email: "", jobTitle: "" };
 
@@ -15,6 +15,7 @@ export default function UsersPage() {
     const [usersList, setUsersList] = useState([]);
     const [currentUser, setCurrentUser] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const { popups, addPopup } = usePopups();
 
     const isEditMode = !!currentUser;
 
@@ -40,8 +41,12 @@ export default function UsersPage() {
 
     async function removeUser(userId) {
         setIsLoading(true);
-        await usersApi.deleteUser(userId);
-        await loadAllUsers();
+        try {
+            await usersApi.deleteUser(userId);
+            await loadAllUsers();
+        } catch(err) {
+            addPopup({ message: err.message, duration: 3000 });
+        }
         setIsLoading(false);
     }
 
@@ -55,30 +60,40 @@ export default function UsersPage() {
 
     async function submit(userForm) {
         setIsLoading(true);
-        if (isEditMode) {
-            await usersApi.updateUser(currentUser.id, userForm);
-        } else {
-            await usersApi.createUser(userForm);
+        try {
+            if (isEditMode) {
+                await usersApi.updateUser(currentUser.id, userForm);
+            } else {
+                await usersApi.createUser(userForm);
+            }
+            stopEditing();
+            await loadAllUsers();
+        } catch(err) {
+            addPopup({ message: err.message, duration: 3000 });
         }
-        stopEditing();
-        await loadAllUsers();
         setIsLoading(false);
     }
 
     async function loadAllUsers() {
         setIsLoading(true);
-        const users = await usersApi.getUsers();
-        setUsersList(users);
+        try {
+            const users = await usersApi.getUsers();
+            setUsersList(users);
+        } catch(err) {
+            addPopup({ message: err.message, duration: 3000 });
+            setUsersList(null);
+        }
         setIsLoading(false);
     }
 
     return (
-        <>
-            <Popup message='An error occurred during the request' duration={2000}></Popup>
-            {isLoading ? <Loading /> : null}
+        <div className={styles.container}>
+            { popups }
+            { isLoading && <Loading /> }
             <UserForm form={form} isEditMode={isEditMode} onSubmit={submit} onReset={reset}></UserForm>
             {/* <Search></Search> */}
+            <button className={styles.refreshButton} onClick={loadAllUsers}>Refresh list</button>
             <UsersList usersList={usersList} editing={currentUser} onStartEdit={startEditing} onStopEdit={stopEditing} onDelete={removeUser}></UsersList>
-        </>
+        </div>
     );
 }
