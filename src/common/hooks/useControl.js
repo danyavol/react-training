@@ -1,7 +1,9 @@
-import { useReducer } from "react";
+import { useMemo, useReducer } from "react";
 
-export function useControl(defaultValue, validators = []) {
-    const [state, dispatch] = useReducer(controlReducer, getDefaultState(defaultValue, validators));
+export function useControl(defaultValue, defaultValidators = []) {
+    const defaultState = useMemo(() => getDefaultState(defaultValue, defaultValidators), []);
+    
+    const [state, dispatch] = useReducer(controlReducer, defaultState);
 
     return {
         value: state.value,
