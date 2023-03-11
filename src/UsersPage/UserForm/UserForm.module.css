@@ -1,12 +1,8 @@
 .wrapper {
-    margin: 20px auto;
+    padding: 20px;
 }
 
 .actionButtonsWrapper {
     display: flex;
     gap: 10px;
-}
-
-.actionButton {
-    padding: 5px 20px;
 }

@@ -17,10 +17,10 @@ export default function UsersList(props) {
                 <div className={styles.actionButtonsWrapper}>
                     {
                         editing?.id === user.id
-                        ? <button className={styles.actionButton} onClick={onStopEdit}>Cancel</button>
-                        : <button className={styles.actionButton} onClick={() => onStartEdit(user.id)}>Edit</button>
+                        ? <button className="btn btn-color-secondary" onClick={onStopEdit}>Cancel</button>
+                        : <button className="btn btn-outline btn-color-secondary" onClick={() => onStartEdit(user.id)}>Edit</button>
                     }
-                    <button className={styles.actionButton} onClick={() => onDelete(user.id)}>Delete</button>
+                    <button className="btn btn-outline btn-color-error" onClick={() => onDelete(user.id)}>Delete</button>
                 </div>
             </div>
         ));

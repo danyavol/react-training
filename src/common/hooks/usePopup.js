@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Popup from "./Popup";
+import Popup from "../components/Popup/Popup";
 
 export function usePopups() {
     const [popupsConfig, setPopupsConfig] = useState([]);

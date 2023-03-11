@@ -1,4 +1,3 @@
-import './App.css';
 import UsersPage from './UsersPage/UsersPage';
 
 function App() {

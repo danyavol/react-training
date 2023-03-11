@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Loading from "../common/components/Loading/Loading";
-import { usePopups } from "../common/components/Popup/Popup.service";
+import { usePopups } from "../common/hooks/usePopup";
 import { formGroup } from "../common/formGroup";
 import { useControl } from "../common/hooks/useControl";
 import { Validators } from "../common/validators";
@@ -92,8 +92,10 @@ export default function UsersPage() {
             { isLoading && <Loading /> }
             <UserForm form={form} isEditMode={isEditMode} onSubmit={submit} onReset={reset}></UserForm>
             {/* <Search></Search> */}
-            <button className={styles.refreshButton} onClick={loadAllUsers}>Refresh list</button>
-            <UsersList usersList={usersList} editing={currentUser} onStartEdit={startEditing} onStopEdit={stopEditing} onDelete={removeUser}></UsersList>
+            <div className="card">
+                <button className={`btn ${styles.refreshButton}`} onClick={loadAllUsers}>Refresh list</button>
+                <UsersList usersList={usersList} editing={currentUser} onStartEdit={startEditing} onStopEdit={stopEditing} onDelete={removeUser}></UsersList>
+            </div>
         </div>
     );
 }

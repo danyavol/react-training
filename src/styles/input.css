@@ -1,0 +1,13 @@
+.input {
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+}
+
+.input.input-invalid:focus-visible {
+    outline-color: var(--error-color);
+}
+
+.input-invalid {
+    border-color: var(--error-color);
+}

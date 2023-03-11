@@ -39,20 +39,20 @@ export default function UserForm(props) {
     }
 
     return (
-        <>
+        <div className="card">
             <div className={`form ${styles.wrapper}`}>
                 { getControlTemplate({ control: form.get('name'), label: "Name", id: "name" }) }
                 { getControlTemplate({ control: form.get('email'), label: "Email", id: "email" }) }
                 { getControlTemplate({ control: form.get('jobTitle'), label: "Job Title", id: "jobTitle" }) }
 
                 <div className={styles.actionButtonsWrapper}>
-                    <button className={styles.actionButton} onClick={onReset}>Reset</button>
+                    <button className="btn btn-outline btn-color-secondary" onClick={onReset}>Reset</button>
 
-                    <button className={styles.actionButton} onClick={submit}>{
+                    <button className="btn" onClick={submit}>{
                         isEditMode ? "Save" : "Create"
                     }</button>
                 </div>
             </div>
-        </>
+        </div>
     );
 }

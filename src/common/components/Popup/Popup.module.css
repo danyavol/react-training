@@ -2,10 +2,10 @@
     padding: 15px;
     border-radius: 5px;
     background-color: #ff8d8d;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--regular-shadow);
     width: 300px;
 }
 
 .message {
-    color: #333;
+    color: var(--dark-color);
 }

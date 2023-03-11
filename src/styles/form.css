@@ -15,27 +15,8 @@
     margin-bottom: 3px;
 }
 
-.input {
-    padding: 5px 10px;
-    border-radius: 3px;
-    border: 1px solid gray;
-}
-
-.input.input-invalid:focus-visible {
-    outline-color: red;
-}
-
-.input-invalid {
-    border-color: red;
-}
-
 .validation-error {
     margin-top: 3px;
     font-size: 0.8rem;
-    color: red;
-}
-
-.submit {
-    align-self: flex-end;
-    padding: 10px 20px;
+    color: var(--error-color);
 }
