@@ -1,4 +1,0 @@
-import "./form.css";
-import "./input.css";
-import "./common.css";
-import "./button.css";

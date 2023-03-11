@@ -12,7 +12,12 @@
     width: 100%;
 }
 
-.refreshButton {
-    margin: 20px 20px 0 auto;
-    display: block;
+.toolbar {
+    display: flex;
+    gap: 10px;
+    margin: 20px 20px 0 20px;
+}
+
+.toolbar > :global.input {
+    flex-grow: 1;
 }

@@ -8,6 +8,8 @@ import UserForm from "./UserForm/UserForm";
 import UsersList from "./UsersList/UsersList";
 import { usersApi } from "./UsersPage.api";
 import styles from "./UsersPage.module.css";
+import Search from "./Search/Search";
+import { filterUsers } from "./filterUsers";
 
 const defaultFormValue = { name: "", email: "", jobTitle: "" };
 
@@ -15,6 +17,7 @@ export default function UsersPage() {
     const [usersList, setUsersList] = useState([]);
     const [currentUser, setCurrentUser] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [search, setSearch] = useState("");
     const { popups, addPopup } = usePopups();
 
     const isEditMode = !!currentUser;
@@ -86,15 +89,23 @@ export default function UsersPage() {
         setIsLoading(false);
     }
 
+    const filteredUsers = filterUsers(usersList, search);
+
     return (
         <div className={styles.container}>
             { popups }
             { isLoading && <Loading /> }
+
             <UserForm form={form} isEditMode={isEditMode} onSubmit={submit} onReset={reset}></UserForm>
-            {/* <Search></Search> */}
+    
             <div className="card">
-                <button className={`btn ${styles.refreshButton}`} onClick={loadAllUsers}>Refresh list</button>
-                <UsersList usersList={usersList} editing={currentUser} onStartEdit={startEditing} onStopEdit={stopEditing} onDelete={removeUser}></UsersList>
+                <div className={styles.toolbar}>
+                    <Search onSearch={setSearch}></Search>
+                    <button className={`btn ${styles.refreshButton}`} onClick={loadAllUsers}>Refresh list</button>
+                </div>
+                <UsersList usersList={filteredUsers} editing={currentUser} 
+                    onStartEdit={startEditing} onStopEdit={stopEditing} onDelete={removeUser}
+                ></UsersList>
             </div>
         </div>
     );
