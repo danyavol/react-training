@@ -1,0 +1,22 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: auto;
+}
+
+.control {
+    display: flex;
+    flex-direction: column;
+}
+
+.control-label {
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+}
+
+.validation-error {
+    margin-top: 3px;
+    font-size: 0.8rem;
+    color: var(--error-color);
+}

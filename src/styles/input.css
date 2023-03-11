@@ -1,0 +1,15 @@
+.input {
+    padding: 0.4rem 0.8rem;
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.input.input-invalid:focus-visible {
+    outline-color: var(--error-color);
+}
+
+.input-invalid {
+    border-color: var(--error-color);
+}

@@ -1,0 +1,61 @@
+.btn {
+    --button-color: #1E90FF;
+    --lighter-color: #4aa0ff;
+    --darker-color: #1c80e6;
+    --accent-color: white;
+
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    line-height: 1;
+    background-color: var(--button-color);
+    color: var(--accent-color);
+    font-weight: 500;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    transition: 
+        background-color 0.1s ease-in-out, 
+        border-color 0.1s ease-in-out, 
+        color 0.1s ease-in-out;
+}
+
+.btn:hover {
+    background-color: var(--darker-color);
+}
+
+.btn:active {
+    background-color: var(--lighter-color);
+}
+
+.btn.btn-outline {
+    border: 1px solid var(--button-color);
+    color: var(--button-color);
+    background-color: transparent;
+}
+
+.btn.btn-outline:hover {
+    background-color: var(--button-color);
+    color: var(--accent-color);
+}
+
+.btn.btn-outline:active {
+    background-color: var(--lighter-color);
+    border-color: var(--lighter-color);
+    color: var(--accent-color);
+}
+
+/* Different colors */
+
+.btn.btn-color-error {
+    --button-color: #FF5733;
+    --lighter-color: #FF7E5B;
+    --darker-color: #E64D21;
+}
+
+.btn.btn-color-secondary {
+    --button-color: #808080;
+    --lighter-color: #999999;
+    --darker-color: #666666;
+}
+
+
