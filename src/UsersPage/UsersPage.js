@@ -7,6 +7,7 @@ import UserForm from "./UserForm/UserForm";
 import UsersList from "./UsersList/UsersList";
 import { usersApi } from "./UsersPage.api";
 import Loading from "../common/components/Loading/Loading";
+import Popup from "../common/components/Popup/Popup";
 
 const defaultFormValue = { name: "", email: "", jobTitle: "" };
 
@@ -73,6 +74,7 @@ export default function UsersPage() {
 
     return (
         <>
+            <Popup message='An error occurred during the request' duration={2000}></Popup>
             {isLoading ? <Loading /> : null}
             <UserForm form={form} isEditMode={isEditMode} onSubmit={submit} onReset={reset}></UserForm>
             {/* <Search></Search> */}

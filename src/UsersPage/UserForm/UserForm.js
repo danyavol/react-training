@@ -40,7 +40,7 @@ export default function UserForm(props) {
 
     return (
         <>
-            <div className="form">
+            <div className={`form ${styles.wrapper}`}>
                 { getControlTemplate({ control: form.get('name'), label: "Name", id: "name" }) }
                 { getControlTemplate({ control: form.get('email'), label: "Email", id: "email" }) }
                 { getControlTemplate({ control: form.get('jobTitle'), label: "Job Title", id: "jobTitle" }) }
