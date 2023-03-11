@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Loading from "../common/components/Loading/Loading";
-import { usePopups } from "../common/hooks/usePopup";
+import { usePopups } from "../common/hooks/usePopups";
 import { formGroup } from "../common/formGroup";
 import { useControl } from "../common/hooks/useControl";
 import { Validators } from "../common/validators";
