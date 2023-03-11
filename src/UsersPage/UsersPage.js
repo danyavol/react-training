@@ -6,6 +6,7 @@ import Search from "./Search/Search";
 import UserForm from "./UserForm/UserForm";
 import UsersList from "./UsersList/UsersList";
 import { usersApi } from "./UsersPage.api";
+import Loading from "../common/components/Loading/Loading";
 
 const defaultFormValue = { name: "", email: "", jobTitle: "" };
 
@@ -72,7 +73,7 @@ export default function UsersPage() {
 
     return (
         <>
-            {isLoading ? <h4>Loading...</h4> : null}
+            {isLoading ? <Loading /> : null}
             <UserForm form={form} isEditMode={isEditMode} onSubmit={submit} onReset={reset}></UserForm>
             {/* <Search></Search> */}
             <UsersList usersList={usersList} editing={currentUser} onStartEdit={startEditing} onStopEdit={stopEditing} onDelete={removeUser}></UsersList>
