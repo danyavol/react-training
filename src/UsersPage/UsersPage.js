@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Loading from "../common/components/Loading/Loading";
 import { usePopups } from "../common/hooks/usePopups";
 import { formGroup } from "../common/formGroup";
@@ -89,7 +89,7 @@ export default function UsersPage() {
         setIsLoading(false);
     }
 
-    const filteredUsers = filterUsers(usersList, search);
+    const filteredUsers = useMemo(() => filterUsers(usersList, search), [usersList, search]);
 
     return (
         <div className={styles.container}>
